@@ -7,7 +7,7 @@ document.addEventListener("DOMContentLoaded", function () {
         // In a real application, you would make an AJAX request to the server for authentication
         // For this example, we'll use an object to store user credentials and redirect URLs
         const userDatabase = {
-            "88032500588": { password: "1988", username: "Johannes Shilongo", redirectUrl: "dashboard.html" },
+            "88032500588": { password: "1988", username: "Johannes Shilongo", redirectUrl: "List.html" },
             "1234": { password: "123", username: "Jonas Donglass", redirectUrl: "List.html" },
             // Add more users as needed
         };
@@ -18,7 +18,7 @@ document.addEventListener("DOMContentLoaded", function () {
         // Check if the entered credentials match any user in the database
         if (userDatabase.hasOwnProperty(idNumber) && userDatabase[idNumber].password === password) {
             const username = userDatabase[idNumber].username;
-            alert(`Welcome, ${username}!`);
+            alert(`Welcome, ${username}`);
 
             // Redirect to the specified URL after successful login
             window.location.href = userDatabase[idNumber].redirectUrl;
