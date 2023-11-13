@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <style>
+    body {
+      background-image: url('nampol.png'); /* Replace with your image URL */
+      background-color: rgb(230, 180, 173);
+      background-size: cover;
+      background-repeat: no-repeat;
+      background-attachment: fixed;
+      opacity: 0.9; /* Adjust the opacity (0.0 to 1.0) as needed */
+      font-family: Arial, sans-serif;
+      margin: 0; /* Remove default margin to prevent unwanted spacing */
+      padding: 0;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 100vh; /* Set the body to full viewport height */
+    }
+
+    .logout-container {
+      margin-top: 10px;
+      margin-right: 10px;
+    }
+
+    table {
+      width: 80%;
+      margin: 20px auto;
+      border-collapse: collapse;
+      background-color: rgba(255, 255, 255, 0.9); /* Background color with opacity */
+    }
+
+    th, td {
+      border: 1px solid #000;
+      padding: 8px;
+      text-align: left;
+    }
+
+    th {
+      background-color: #333;
+      color: white;
+    }
+
+    .woa {
+      color: red;
+      font-weight: bold;
+    }
+
+    .search-button {
+      margin: 10px;
+    }
+  </style>
+</head>
+<body>
+  <div class="logout-container">
+    <button onclick="logout()">Logout</button>
+  </div>
+
+  <input type="text" id="searchInput" placeholder="Enter ID Number">
+  <button class="search-button" onclick="searchByID()">Search</button>
+
+  <table>
+    <thead>
+      <tr>
+        <th>First Name</th>
+        <th>Last Name</th>
+        <th>ID Number</th>
+        <th>Description</th>
+        <th>Amount</th>
+        <th>Date Fine Issued</th> <!-- Added Date Fine Issued column -->
+        <th>Expiry Date</th> <!-- Added Expiry Date column -->
+        <th>Notification</th>
+      </tr>
+    </thead>
+    <tr>
+      <td>Shilongo</td>
+      <td>Moses</td>
+      <td>7834567890</td>
+      <td>Speeding</td>
+      <td>N$1000</td>
+      <td>2023-11-09</td> <!-- Add the actual date here -->
+      <td>2023-11-30</td> <!-- Add the actual expiry date here -->
+      <td class="woa">WOA</td>
+    </tr>
+    <tr>
+      <td>Jane</td>
+      <td>Smith</td>
+      <td>9876543210</td>
+      <td>Running a Red Light</td>
+      <td>N$1500</td>
+      <td>2023-11-10</td> <!-- Add the actual date here -->
+      <td>2023-12-01</td> <!-- Add the actual expiry date here -->
+      <td></td>
+    </tr>
+    <tr>
+      <td>Festus</td>
+      <td>Smtigo</td>
+      <td>9876543210</td>
+      <td>No Licence</td>
+      <td>N$1500</td>
+      <td>2023-11-10</td> <!-- Add the actual date here -->
+      <td>2023-12-01</td> <!-- Add the actual expiry date here -->
+      <td class="woa">WOA</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>Tambo</td>
+      <td>Naruseb</td>
+      <td>9876543210</td>
+      <td>Speeding</td>
+      <td>N$1500</td>
+      <td>2023-11-10</td> <!-- Add the actual date here -->
+      <td>2023-12-01</td> <!-- Add the actual expiry date here -->
+      <td class="woa">WOA</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>Thando</td>
+      <td>Moogo</td>
+      <td>9876543210</td>
+      <td>Drink and Drive</td>
+      <td>N$1500</td>
+      <td>2023-11-10</td> <!-- Add the actual date here -->
+      <td>2023-12-01</td> <!-- Add the actual expiry date here -->
+      <td></td>
+    </tr>
+    <tr>
+      <td>Bernard</td>
+      <td>Shekutamba</td>
+      <td>9876543210</td>
+      <td>Unlicenced Vehicle</td>
+      <td>N$1500</td>
+      <td>2023-11-10</td> <!-- Add the actual date here -->
+      <td>2023-12-01</td> <!-- Add the actual expiry date here -->
+      <td></td>
+    </tr>
+    <tr>
+      <td>Simson</td>
+      <td>Haihambo</td>
+      <td>9876543210</td>
+      <td>Running a Red Light</td>
+      <td>N$1500</td>
+      <td>2023-11-10</td> <!-- Add the actual date here -->
+      <td>2023-12-01</td> <!-- Add the actual expiry date here -->
+      <td class="woa">WOA</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>Naftal</td>
+      <td>Shekupe</td>
+      <td>9876543210</td>
+      <td>No parking zone</td>
+      <td>N$1500</td>
+      <td>2023-11-10</td> <!-- Add the actual date here -->
+      <td>2023-12-01</td> <!-- Add the actual expiry date here -->
+      <td></td>
+    </tr>
+    <tr>
+      <td>Tomas</td>
+      <td>Shikongo</td>
+      <td>9876543210</td>
+      <td>No Stop Zone</td>
+      <td>N$1500</td>
+      <td>2023-11-10</td> <!-- Add the actual date here -->
+      <td>2023-12-01</td> <!-- Add the actual expiry date here -->
+      <td></td>
+    </tr>
+  </table>
+
+  <script>
+    function searchByID() {
+      var input, filter, table, tr, td, i, txtValue;
+      input = document.getElementById("searchInput");
+      filter = input.value;
+      table = document.querySelector("table");
+      tr = table.getElementsByTagName("tr");
+      for (i = 0; i < tr.length; i++) {
+        td = tr[i].getElementsByTagName("td")[2]; // Index 2 for the ID number column
+        if (td) {
+          txtValue = td.textContent || td.innerText;
+          if (txtValue === filter) {
+            tr[i].style.display = "";
+          } else {
+            tr[i].style.display = "none";
+          }
+        }
+      }
+    }
+
+    function logout() {
+      // Redirect to the login page or any other desired page after logout
+      window.location.href = "index.html";
+    }
+  </script>
+</body>
+</html>
