@@ -3,23 +3,31 @@
 <head>
   <style>
     body {
-      background-image: url('nampol.png'); /* Replace with your image URL */
-      background-color: rgb(230, 180, 173);
+      background-image: url('R.png');
+      background-color: rgb(10, 73, 140);
       background-size: cover;
       background-repeat: no-repeat;
       background-attachment: fixed;
-      opacity: 0.9; /* Adjust the opacity (0.0 to 1.0) as needed */
+      opacity: 0.9;
       font-family: Arial, sans-serif;
-      margin: 0; /* Remove default margin to prevent unwanted spacing */
+      margin: 0;
       padding: 0;
       display: flex;
       align-items: center;
-      justify-content: space-between;
-      height: 100vh; /* Set the body to full viewport height */
+      flex-direction: column; /* Center content vertically */
     }
 
     .logout-container {
       margin-top: 10px;
+      margin-bottom: 10px; /* Add margin at the bottom for spacing */
+    }
+
+    .search-container {
+      display: flex;
+      margin-bottom: 20px; /* Add margin at the bottom for spacing */
+    }
+
+    #searchInput {
       margin-right: 10px;
     }
 
@@ -27,7 +35,7 @@
       width: 80%;
       margin: 20px auto;
       border-collapse: collapse;
-      background-color: rgba(255, 255, 255, 0.9); /* Background color with opacity */
+      background-color: rgba(255, 255, 255, 0.9);
     }
 
     th, td {
