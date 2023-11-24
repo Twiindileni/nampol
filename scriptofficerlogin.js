@@ -5,22 +5,23 @@ document.addEventListener("DOMContentLoaded", function () {
         event.preventDefault();
 
         // In a real application, you would make an AJAX request to the server for authentication
-        // For this example, we'll use an array to store user credentials and redirect URLs
-        const users = [
-            { idNumber: "88032500588", password: "1988", redirectUrl: "List.html" },
-            { idNumber: "12345", password: "123", redirectUrl: "List.html" },
-            // Add more users as needed with their corresponding redirect URLs
-        ];
+        // For this example, we'll use an object to store user credentials and redirect URLs
+        const userDatabase = {
+            "88032500588": { password: "1988", username: "Johannes Shilongo", redirectUrl: "List.html" },
+            "12345": { password: "123", username: "Jonas Donglass", redirectUrl: "List.html" },
+            // Add more users as needed
+        };
 
         const idNumber = document.getElementById("id-number").value;
         const password = document.getElementById("password").value;
 
-        // Simulate server authentication by checking against the array
-        const user = users.find(u => u.idNumber === idNumber && u.password === password);
+        // Check if the entered credentials match any user in the database
+        if (userDatabase.hasOwnProperty(idNumber) && userDatabase[idNumber].password === password) {
+            const username = userDatabase[idNumber].username;
+            alert(`Welcome, ${username}`);
 
-        if (user) {
-            // Redirect to the specified URL for the authenticated user
-            window.location.href = user.redirectUrl;
+            // Redirect to the specified URL after successful login
+            window.location.href = userDatabase[idNumber].redirectUrl;
         } else {
             alert("Invalid credentials. Please try again.");
         }
